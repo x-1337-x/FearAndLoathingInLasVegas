@@ -1,0 +1,12 @@
+{
+  "name": "FearAndLoathingInLasVegas",
+  "version": "1.0.0",
+  "description": "IM-client(front)",
+  "main": "index.js",
+  "author": "Your mom",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.4",
+    "express": "^4.16.2"
+  }
+}
