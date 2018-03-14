@@ -6,6 +6,9 @@ const bodyParser = require('body-parser')
 const API = require('./router');
 const db = require('./db');
 
+const PORT = process.env.PORT || 8888;
+console.log(PORT)
+
 app.use(cors());
 app.use(bodyParser.json());
 app.use(API);
@@ -17,7 +20,7 @@ app.get('/', function(req, res){
 
 db.sequelize.sync({force:true})
 .then(()=>{
-  app.listen(3000);
+  app.listen(PORT);
 })
 .catch((e)=>{
   console.log(e)
