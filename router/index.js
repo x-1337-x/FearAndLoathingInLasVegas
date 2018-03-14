@@ -2,7 +2,6 @@ const express = require('express');
 const API = express.Router();
 
 const db = require('../db');
-console.log(db)
 API.all('/auth/signin', (req, res, next) => {
   if(!req.query.token) {
     res.redirect(403, 'http://localhost:3000');
