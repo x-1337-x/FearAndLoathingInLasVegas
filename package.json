@@ -6,6 +6,7 @@
   "author": "Your mom",
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^1.0.3",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
     "ejs": "2.5.6",
