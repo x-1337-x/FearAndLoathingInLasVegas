@@ -1,8 +1,11 @@
 const express = require("express");
 const API = express.Router();
+const jwt = require('jsonwebtoken');
 
 const db = require("../db");
-API.all("/auth/signin", (req, res, next) => {
+const jwtSecret = 'asdfasdf'; //TODO: hide this
+
+API.post("/auth/signin", (req, res, next) => {
   if (!req.query.token) {
     res.redirect(403, "http://localhost:3000");
   } else {
@@ -13,6 +16,7 @@ API.all("/auth/signin", (req, res, next) => {
 
 API.post("/auth/signup/", (req, res) => {
   let { username, email, password } = req.body;
+  let token = jwt.sign({email}, jwtSecret, {expiresIn: '1m'});
   return db.User.create({
     username,
     email,
@@ -20,7 +24,7 @@ API.post("/auth/signup/", (req, res) => {
   })
     .then(user => {
       console.log(req.body);
-      res.json({ success: true, user });
+      res.json({ success: true, user, token });
     })
     .catch(e => {
       console.log(e);
